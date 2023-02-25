@@ -121,12 +121,6 @@ public class Hospital3 extends HospitalBase {
     }
 
     public static void main(String[] args) {
-        /*
-         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-         * REMOVE THE MAIN METHOD BEFORE SUBMITTING TO THE AUTOGRADER
-         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-         * The following main method is provided for simple debugging only
-         */
 
         var hospital = new Hospital3();
         var p8 = new Patient("3", "10:00");
