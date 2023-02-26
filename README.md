@@ -1,6 +1,6 @@
 # data_structure_and_algorithm
 
-The start of the algorithm and structure was through university study. However, I have continuously developed previous code to then.
+The start of the structure and algorithm was through academic curriculum. However, I have continuously developed previous code to then.
 
 The Source file consist of iteration, hash function for login system, and tree implementation.
 
