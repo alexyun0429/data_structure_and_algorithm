@@ -12,3 +12,7 @@ The Source file consist of iteration, hash function for login system, and tree i
     
 3. Tree implementation</br>
     Through the terms and conditions given, come up with tree implementation algorithm to set priority and output.
+
+***Important***
+However, this is not a full code. Therefore, it won't be able to run.
+Inorder to run this code, there need to be further sources. that I did not upload.
