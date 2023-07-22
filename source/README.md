@@ -1,92 +1,57 @@
-# Overview description of data structure and algorithm used
+Overview of Data Structures and Algorithms Used
+Hospital 1
+Algorithm: Bucket Sort
 
-# Hospital 1
+I have implemented the Bucket Sort algorithm using an array for Hospital 1. The choice of Bucket Sort is based on the fixed time constraints of the hospital operations. With the hospital accepting only 3 patients per hour and operating for 9 hours (excluding lunch time), I use a fixed-size array of 27 (3 patients x 9 hours) to represent time slots.
 
-I have chosen array with bucket sorting. It is because bucket was fixed to as we know the time is fixed. Through making mistake of going through linked lists (single and doubly), found out sort it and inserting into bucket was good.
-Anyway since, data (patient) would have to be sorted, therefore, I chose bucket because when we know the exact amount it is good in time and space efficiency.
+To efficiently place patients in their respective time slots, I use the following formula to calculate the index:
 
-I have use helper methods such compareTo and timeChecker to break the time to be equals to an array index which allows exact place to know as soon as data is added.
+java
+Copy code
+int patientHour = (patientHour - 8) * 3;
+int patientMinute = patientMinute / 20;
+int index = patientHour + patientMinute;
+This ensures that patients are sorted and placed accurately in their designated slots.
 
-patientHour = (patientHour - 8) * 3;
-patientMinute = (patientMinute / 20);
+Time Complexity:
 
-These lines are the equation to convert to index like.
+Best case (Ω): Ω(1)
+Worst case (O): O(n) [When the array is full, but since the array size is fixed, it effectively becomes O(1)]
+Hospital 2
+Data Structure: Sorted Dynamic Array (ArrayList)
 
-For instance, 10:20 will be broke down to hour and minute.
-So for hour, (10-8)*3 = 6
-For minute, 20/20 = 1
+For Hospital 2, I have implemented a Sorted Dynamic Array using the ArrayList algorithm. The choice of this data structure is suitable when there could be a large number of patient inputs, allowing for efficient insertion and retrieval of patients in sorted order.
 
-patientTimeSlot[patientHour + patientMinute] = patient; 
+Patients are compared based on their time of arrival (hour and minute) using the compareTo method. To maintain the sorting order, when adding a new patient, I traverse the array and find the appropriate position to insert the new patient.
 
-And add together to be index. 6+1=7.
-So 10:20 will be at array index of 7.
+Time Complexity:
 
-This equation was implemented in addPatient() method.
+Adding a patient: O(n) [Due to the traversal, but amortized time of push is O(1) because of the doubling strategy]
+Iterating: O(1) [Patients are already sorted in the dynamic array]
+Hospital 3
+Data Structure: Doubly Linked List
+Algorithm: Merge Sort
 
-Then when I iterate, I have created array[27] to copy paste exactly what addPatient gives to be returned.
+Hospital 3 uses a Doubly Linked List with the Merge Sort algorithm. This choice is made to efficiently handle unsorted data input with memory efficiency. The Doubly Linked List allows for easy traversal of patients, and the Merge Sort ensures a stable sorting order, which is essential for maintaining patient priority.
 
-Other algorithms would gives no beneficial of knowing the exact length or size of data input in comes of space efficiency, however, at my case of customised bucket sort have high efficiency of time and space complexity.
+Time Complexity:
 
-Best case (Ω) would be Ω(1)
-And worst-case (O) of O(n) if it was n number of input. However, we know the limitation clearly that we can only accept 3 patients per hour and hospital operates only 9 hours excluding an hour of lunch time. 3 x 9 = 27 of array size is fixed. Therefore, as I assumed O(1) would be worst case.
-for (Object o : patientTimeSlot) {
-    if (o != null) {
-        initial[real] = (PatientBase) o;
-real += 1; }
-}
+Adding a patient: Ω(1) [Due to the nature of linked list insertion]
+Iterating: O(nlogn) [Due to Merge Sort]
+Login System
+Data Structure: Hash Table
 
+The Login System employs a hash table to store hashed passwords instead of plain text passwords. This choice is made to protect user passwords from being easily compromised. The use of polynomial accumulation generates unique indices for emails to prevent collisions.
 
-# Hospital 2
+Time Complexity:
 
-I have used Sorted dynamic array using doubling strategy. I have implemented arrayList algorithm.
-The reason why I have chosen is because there could be too many data (patient) input. To shorten the time, I have chosen array. Although it is O(n) insertion to meet the criteria, it will be Amortised time of push is O(1). However, for incremental strategy analysis would be O(n). It might be efficient when there are limitations like hospital 1 but not for hospital 2.
+Storing a password: O(1)
+Generating a unique index for an email: O(1)
+Tree of Symptoms
+Data Structure: Binary Search Tree
 
-I have used compareTo method to order the patients. It split to hour and minutes, initially check on hours then moved on to minutes to be compared.
-Since the add method had to be O(n), I have sorted by going through the array and compare the data added and sorted it.
-If new patient is earlier than existing patient, then old patient would be pushed to next index and add new patient to that index.
-Also, since the system needed priority, I could not choose an unstable sort. Therefore, I have implemented algorithm which always compare to and push each index to add and which have time complexity of O(n).
-Since it is already sorted by the time iterate to print, it is O(1) for an iterator.
-It is best because even though inserting is O(n), Amortised time of push is O(1) and iterating is O(1).
+The Tree of Symptoms has been restructured into a Binary Search Tree. However, it's worth noting that the current implementation is not balanced, which could lead to suboptimal performance in certain cases. Consider implementing a balanced binary search tree, such as an AVL tree or Red-Black tree, to ensure more efficient operations and avoid skewed trees.
 
-Best case would be Ω(n) and in terms of adds an element at the end of the array is Amortised O(1) because it is doubling strategy (if 80% of array is full, will be doubled).
-worst case is O(n).
+Time Complexity:
 
-
-# Hospital3
-
-I have used doubly linked list with merge sort.
-Because list are easy to insert unsorted data with memory efficiency.
-Then I have thought that since it is unsorted, to reduce the risk of error, I have chosen stable sorting method which is merge sort.
-Moreover, data input is unlimited, hence, I have chosen link over an array.
-Although it was not in criteria, doubly linked can easily traverse previous and next which gives advantage of allocation, reallocation of memory and deletion.
-
-I have used merge sort to order. It is because to sort list with priority needed stable algorithms.
-Due stable sort, I could maintain the priority of users. Because unsorted algorithm swaps the equal data order.
-
-addPatient is always Ω (1) because it is unsorted list insertion.
-Iterator is worst time O(nlogn) whenever we divide a number into half in every step, it can be represented using a logarithmic function, which is log n and the number of steps can be represented by log n + 1(at most). And to merge the subarrays, made by dividing the original array of n elements, a running time of O(n) will be required. So n(log n + 1) = nlogn
-
-
-# Login System
-
-Used hash code to store the password instead of the plain text password because
-- Many people use the same password over many accounts, to prevent further damage after hacked.
-- It is hard to encrypt.
-- Hard to encrypt it by just looking.
-- It is quick and easy to store.
-- Difficult to create an initial input that would match a specific desired output.
-
-Also, I have stored the email in the hash table becase email will be hashed and compressed to be index but there are chances of having same index after hashed. Therefore, using the characteristic of uniqueness of email, system can prevent duplication. Also, this system required linear probing, by just checking the index there might be collision which are not detectable. Moreover, to change password, system has to check the email as reference to give authority. The email and password could be stored in separate table but that is low space efficiency, hence, not appropriate.
-
-I have used polynomial accumulation. Partition the bits of the key into a sequence of components of fixed length.
-It is suitable because polynomial generates with the string.
-Generates large range of index.
-Also, prime numbers in between 30 to 43 are particularly beneficial when working with English character strings. Because in a list of over 50,000 words, produced less than 7 collisions in each case.
-
-
-# Tree of Symptoms
-
-As it has been restructured, it is now Binary search tree.
-
-However, it is not a balanced tree. It is because the root is randomly chosen and might give a situation of adding on only either one side (left-left-left-left-.....-left).
-Also, there might be cases such height of left child and right child might differ by more than 1.
+Searching for a symptom: O(log n) [In a balanced binary search tree, where n is the number of symptoms]
